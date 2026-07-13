@@ -7,7 +7,7 @@ This Threat Model documents the potential security concerns behind my automated 
 The system uses a Raspberry-Pi connected to a remote device which acts as the controller over a local WiFi network. The remote device sends commands to the Raspberry-Pi either through manual intervention or the Raspberry-Pi will retrieve data about the local area's time of sunrise and sunset via an external API and operate the curtains accordingly. The use of a remote connection and the retrieval of data from a third party raises some security concerns which need to be evaluated through a security analysis.
 
 ### Approach:
-We will be using the OWASP Threat Modelling approach, this will allow us to identify, quantify, and address the security risks associated with this system. Within this approach we will be using the STRIDE methodology, it was made by Microsoft and it divides threats into 6 categories:
+We will be using the OWASP Threat Modelling approach, this will allow us to identify, quantify, and address the security risks associated with this system. Within this approach we will be using the STRIDE methodology, it was made by Microsoft and it classes threats into 6 categories:
 - Spoofing -> related to Authentication.
 - Tampering -> related to Integrity.
 - Repudiation -> related to Non-Repudiation.
@@ -62,10 +62,10 @@ Below is a DFD diagram which breaks down the system into its components, the flo
 ### Figure 2: STRIDE Table
 <img width="820" height="5888" alt="STRIDE FINAL FINAL;" src="https://github.com/user-attachments/assets/e5028087-e6ab-47f7-9253-ea737e1af827" />
 
-NOTE: After reviewing the STRIDE table above i've noticed the majority of security concerns arise from the same things, such as: no authentication, no/weak encrytion, the absence of logging, no input validation and no rate-limiting. Addressing these issues will mitigate the majority of threats towards this system.
+NOTE: After reviewing the STRIDE table above i've noticed the majority of security concerns arise from the same things, such as: no authentication, no/weak encryption, the absence of logging, no input validation and no rate-limiting. Addressing these issues will mitigate the majority of threats towards this system.
 
 ## Risk Assessment:
-Each risk is rated by the likelihood of it happening and the imact it would have if it did occur. These 2 are then combined using a risk matrix to provide an overall risk rating.
+Each risk is rated by the likelihood of it happening and the impact it would have if it did occur. These 2 are then combined using a risk matrix to provide an overall risk rating.
 
 ### Figure 3: Risk Matrix
 <img width="1143" height="365" alt="RISK MATRIX DONE" src="https://github.com/user-attachments/assets/bf0493f1-ad7e-47be-9a93-e060141e9bc1" />
@@ -73,7 +73,7 @@ Each risk is rated by the likelihood of it happening and the imact it would have
 ### Figure 4: Risk Ratings
 <img width="1133" height="5678" alt="RISK TABLE DONE" src="https://github.com/user-attachments/assets/6f4107ad-680c-4670-9fcd-83ed67f379cd" />
 
-I've found the highest risks are: Spoofing and Information Disclosure at both the curtain control application and on the data flow between the application and the client's device. The majority of issues stem from: a lack in authentication and a lack in encryption of data in-transit. Therfore we must put more resources towards mitigating these issues.
+I've found the highest risks are: Spoofing and Information Disclosure at both the curtain control application and on the data flow between the application and the client's device. The majority of issues stem from: a lack in authentication and a lack in encryption of data in-transit. Therefore, we must put more resources towards mitigating these issues.
 
 ## Mitigations:
 
@@ -85,13 +85,13 @@ A couple mitigations cover a wide range of threats here: TLS Encryption for tamp
 ## Security Goals and Validation
 
 ### Security Goals:
-- 1. Authentication -> All inputs and commands into the system must be authenticated to verify the identity of the person behind them.
-- 2. Confidentiality -> All communications in the system must be encrypted and unreadable to unauthorised entities.
-- 3. Integrity -> All communications must have protection against tampering.
-- 4. Availability -> The system should be available and have protection against DoS attacks using rate-limiting and input validation.
-- 5.  Non-Repudiation -> The system should log all inputs and commands to keep a record of actions done.
-- 6. Hardening -> The Raspberry-Pi should be hardened to prevent compromise, by removing unnecessary softwares and services.
-- 7. Secure Storage -> The storage of data should be secure (such as in the configuration store).
+- Authentication -> All inputs and commands into the system must be authenticated to verify the identity of the person behind them.
+- Confidentiality -> All communications in the system must be encrypted and unreadable to unauthorised entities.
+- Integrity -> All communications must have protection against tampering.
+- Availability -> The system should be available and have protection against DoS attacks using rate-limiting and input validation.
+- Non-Repudiation -> The system should log all inputs and commands to keep a record of actions done.
+- Hardening -> The Raspberry-Pi should be hardened to prevent compromise, by removing unnecessary software and services.
+- Secure Storage -> The storage of data should be secure (such as in the configuration store).
 
 ### Validation:
 - Demonstrate the vulnerabilities in real-time -> We will confirm that these vulnerabilities actually exist by exploiting them to see if the prototype system meets our security goals or not.
