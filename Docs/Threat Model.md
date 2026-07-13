@@ -77,6 +77,60 @@ I've found the highest risks are: Spoofing and Information Disclosure at both th
 
 ## Mitigations:
 
+### Figure 5: Mitigations Table
+<img width="820" height="3498" alt="MITIGATIONS TABLE FINAL" src="https://github.com/user-attachments/assets/e2c18310-6c30-48b6-b4f8-30b2205db1ae" />
+
+A couple mitigations cover a wide range of threats here: TLS Encryption for tampering and information disclosure over data channels, authentication for spoofing, logging for repudiation. This reflects the pattern we saw during the risk rating process.
+
+## Security Goals and Validation
+
+### Security Goals:
+- 1. Authentication -> All inputs and commands into the system must be authenticated to verify the identity of the person behind them.
+- 2. Confidentiality -> All communications in the system must be encrypted and unreadable to unauthorised entities.
+- 3. Integrity -> All communications must have protection against tampering.
+- 4. Availability -> The system should be available and have protection against DoS attacks using rate-limiting and input validation.
+- 5.  Non-Repudiation -> The system should log all inputs and commands to keep a record of actions done.
+- 6. Hardening -> The Raspberry-Pi should be hardened to prevent compromise, by removing unnecessary softwares and services.
+- 7. Secure Storage -> The storage of data should be secure (such as in the configuration store).
+
+### Validation:
+- Demonstrate the vulnerabilities in real-time -> We will confirm that these vulnerabilities actually exist by exploiting them to see if the prototype system meets our security goals or not.
+- Mitigate vulnerabilities -> if there are exploits that are found we will mitigate them using the methods defined in our mitigations table.
+- Test for vulnerabilities after mitigating threats -> We're going to repeat the same exploits we used initially to see if our mitigations were successful.
+- Gap analysis -> We will conduct a comparison between where we are in terms of security posture compared to our goals and where we want to be to identify any risks that are left.
+
+### Risks that will remain after validation:
+There are some risks that are out of the scope of this project to mitigate, for example:
+- Physical Attacks which interact with the hardware of the system.
+- Attacks on the external API used.
+- Attacks on the WiFi network used.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
