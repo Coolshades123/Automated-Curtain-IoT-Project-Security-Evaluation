@@ -22,3 +22,5 @@ def stop_curtain():
     state = "STOPPED"
     return state
 
+def get_state():
+    return state
