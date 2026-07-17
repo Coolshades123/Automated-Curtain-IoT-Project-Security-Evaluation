@@ -1,5 +1,5 @@
 from flask import Flask, redirect
-from curtain import open_curtain, close_curtain, stop_curtain
+from curtain import open_curtain, close_curtain, stop_curtain, get_state
 from datetime import datetime, date
 from sunset_api import APIResponse
 import time
@@ -98,6 +98,7 @@ def home_page():
             <h1>Welcome to the Curtain Control Server</h1>
             <p>Click on the following buttons to control the curtains:</p>
             <p>Current Mode: placeholder</p>
+            <p>Curtain Status: state</p>
             <div class= "buttons">
                 <a href="/open"><button class="open">Open Curtain</button></a>
                 <a href="/close"><button class="close">Close Curtain</button></a>
@@ -108,7 +109,9 @@ def home_page():
     </body>
     </html>
     """
-    return html.replace("placeholder", mode)
+    html = html.replace("placeholder", mode)
+    html = html.replace("state", get_state())
+    return html
 
 @app.route("/open")
 def open_curtain_route():
